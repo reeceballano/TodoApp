@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+	<title>Angular Tutorial</title>
+
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="stylesheets/todo.css">
+
+	<!-- JS -->
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/todo.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div id="header">
+      <div class="navbar navbar-inverse">
+        <div class="navbar-inner">
+          <div class="container-fluid">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="#" name="top">Angular TODO's</a>
+            <div class="nav-collapse collapse">
+              <ul class="nav">
+                <li><a href="#"><i class="icon-home icon-white"></i> Home</a></li>
+                <li class="divider-vertical"></li>
+                <li class="active"><a href="#"><i class="icon-file icon-white"></i> Pages</a></li>
+                <li class="divider-vertical"></li>
+                <li><a href="#"><i class="icon-envelope icon-white"></i> Messages</a></li>
+                <li class="divider-vertical"></li>
+                          <li><a href="#"><i class="icon-signal icon-white"></i> Stats</a></li>
+                <li class="divider-vertical"></li>
+                <li><a href="#"><i class="icon-lock icon-white"></i> Permissions</a></li>
+                <li class="divider-vertical"></li>
+              </ul>
+              <div class="btn-group pull-right">
+                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                  <i class="icon-user"></i> admin <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="#"><i class="icon-wrench"></i> Settings</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#"><i class="icon-share"></i> Logout</a></li>
+                </ul>
+              </div>
+            </div>
+            <!--/.nav-collapse -->
+          </div>
+          <!--/.container-fluid -->
+        </div>
+        <!--/.navbar-inner -->
+      </div>
+      <!--/.navbar -->
+    </div><!-- end header -->
+	
+	<div ng-controller="TodoCtrl" class="container">
+		<h4>My Tasklist</h4>
+		<span>{{remaining()}} of {{todos.length}} remaining</span>
+
+		<ul class="unstyled">
+			<li ng-repeat="todo in todos">
+				<input type="checkbox" ng-model="todo.done">
+				<span class="done{{todo.done}}">{{todo.text}}</span>
+			</li>
+		</ul>
+
+		<form ng-submit="addTodo()">
+			<input type="text" ng-model="todoText" size="30" placeholde="add new todo here" />
+			<input type="submit" class="btn-primary" value="add" />
+		</form>
+	</div><!-- end container -->
+</body>
+</html>
